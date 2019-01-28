@@ -16,4 +16,35 @@ class PlanetRow extends StatelessWidget {
         ),
       );
     }
+
+    final planetThumbnail = new Container(
+      margin: new EdgeInsets.symmetric(
+        vertical: 16
+      ),
+      alignment: FractionalOffset.centerLeft,
+      child: new Image(
+        image: new AssetImage("assets/images/mars.png"),
+        height: 92,
+        width: 92,
+      ),
+    );
+
+    final planetCard = new Container(
+      height: 124,
+      margin: new EdgeInsets.only(
+        left: 46
+      ),
+      decoration: new BoxDecoration(
+        color: Colors.lightBlue,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10,
+            offset: new Offset(0, 10),
+          ),
+        ],
+      ),
+    );
 }
