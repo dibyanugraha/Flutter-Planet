@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:planet/models/Planet.dart';
 import "package:planet/views/PlanetDetailPage.dart";
 import 'package:planet/views/common/Style.dart';
+import 'package:planet/views/separator/PlanetSeparator.dart';
 
 class PlanetSummary extends StatelessWidget {
   final Planet planet;
   final bool horizontal;
 
-  PlanetSummary(
-    this.planet,
-    {this.horizontal = true});
+  PlanetSummary(this.planet, {this.horizontal = true});
 
-    PlanetSummary.vertical(this.planet) : horizontal = false;
+  PlanetSummary.vertical(this.planet) : horizontal = false;
 
   @override
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
       margin: new EdgeInsets.symmetric(vertical: 16),
-      alignment: horizontal ? FractionalOffset.centerLeft
-        : FractionalOffset.center,
+      alignment:
+          horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
         tag: "planet-hero-${planet.id}",
         child: new Image(
@@ -30,54 +29,49 @@ class PlanetSummary extends StatelessWidget {
     );
 
     Widget _planetValue({String value, String image}) {
-      return new Row(
-        children: <Widget>[
-          new Image.asset(
-            image,
-            height: 12,
-          ),
-          new Container(
-            width: 8,
-          ),
-          new Text(value, style: Style.commonTextStyle)
-        ],
+      return new Container(
+        child: new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          new Image.asset(image, height: 12.0),
+          new Container(width: 8.0),
+          new Text(planet.gravity, style: Style.smallTextStyle),
+        ]),
       );
     }
 
     final planetCardContent = new Container(
-      margin: new EdgeInsets.fromLTRB(horizontal ? 76 : 16, 
-        horizontal ? 16 : 42, 16, 16),
+      margin: new EdgeInsets.fromLTRB(
+          horizontal ? 76 : 16, horizontal ? 16 : 42, 16, 16),
       constraints: new BoxConstraints.expand(),
       child: new Column(
-        crossAxisAlignment: horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+        crossAxisAlignment:
+            horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
           new Container(
             height: 4,
           ),
           new Text(
             planet.name,
-            style: Style.headerTextStyle,
+            style: Style.titleTextStyle,
           ),
           new Container(
             height: 10,
           ),
           new Text(
             planet.location,
-            style: Style.regularTextStyle,
+            style: Style.commonTextStyle,
           ),
-          new Container(
-            margin: new EdgeInsets.symmetric(vertical: 8),
-            height: 2,
-            width: 18,
-            color: Colors.teal,
-          ),
+          new Separator(),
           new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Expanded(
                 flex: horizontal ? 1 : 0,
                 child: _planetValue(
                     value: planet.distance,
                     image: 'assets/images/ic_distance.png'),
+              ),
+              new Container(
+                width: horizontal ? 8.0 : 32.0,
               ),
               new Expanded(
                 flex: horizontal ? 1 : 0,
@@ -95,8 +89,8 @@ class PlanetSummary extends StatelessWidget {
       child: planetCardContent,
       height: horizontal ? 124 : 154,
       margin: horizontal
-        ? new EdgeInsets.only(left: 46)
-        : new EdgeInsets.only(top: 72),
+          ? new EdgeInsets.only(left: 46)
+          : new EdgeInsets.only(top: 72),
       decoration: new BoxDecoration(
         color: Colors.lightBlue,
         shape: BoxShape.rectangle,
@@ -113,17 +107,15 @@ class PlanetSummary extends StatelessWidget {
 
     return new GestureDetector(
       onTap: horizontal
-        ? () => Navigator.of(context).push(
-          new PageRouteBuilder(
-            pageBuilder: (_, __, ___) => new PlanetDetailPage(planet),
-            transitionsBuilder: 
-              (context, animation, secondaryAnimation, child) => 
-                FadeTransition(
-                  opacity: animation,
-                  child: child,
-                )
-          ))
-        : null,
+          ? () => Navigator.of(context).push(new PageRouteBuilder(
+              pageBuilder: (_, __, ___) => new PlanetDetailPage(planet),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      )))
+          : null,
       child: new Container(
         height: 120,
         margin: const EdgeInsets.symmetric(
