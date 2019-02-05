@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:planet/models/Planet.dart';
 
 class PlanetDetailPage extends StatelessWidget {
-
   final Planet planet;
 
   PlanetDetailPage(this.planet);
@@ -16,11 +15,13 @@ class PlanetDetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(planet.name),
-            new Image.asset(
-              planet.image,
-              width: 96,
-              height: 96,
-            )
+            new Hero(
+                tag: "planet-hero-${planet.id}",
+                child: new Image.asset(
+                  planet.image,
+                  width: 96,
+                  height: 96,
+                ))
           ],
         ),
       ),

@@ -30,10 +30,13 @@ class PlanetRow extends StatelessWidget {
     final planetThumbnail = new Container(
       margin: new EdgeInsets.symmetric(vertical: 16),
       alignment: FractionalOffset.centerLeft,
-      child: new Image(
-        image: new AssetImage(planet.image),
-        height: 92,
-        width: 92,
+      child: new Hero(
+        tag: "planet-hero-${planet.id}",
+        child: new Image(
+          image: new AssetImage(planet.image),
+          height: 92,
+          width: 92,
+        ),
       ),
     );
 
@@ -114,11 +117,9 @@ class PlanetRow extends StatelessWidget {
       ),
     );
     return new GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        new PageRouteBuilder(
-          pageBuilder: (_, __, ___) => new PlanetDetailPage(planet),
-        )
-      ),
+      onTap: () => Navigator.of(context).push(new PageRouteBuilder(
+            pageBuilder: (_, __, ___) => new PlanetDetailPage(planet),
+          )),
       child: new Container(
         height: 120,
         margin: const EdgeInsets.symmetric(
