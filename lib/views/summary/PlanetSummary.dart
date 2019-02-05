@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:planet/models/Planet.dart';
 import "package:planet/views/PlanetDetailPage.dart";
+import 'package:planet/views/common/Style.dart';
 
 class PlanetSummary extends StatelessWidget {
   final Planet planet;
@@ -14,24 +15,6 @@ class PlanetSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
-
-    final headerTextStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 18,
-      fontWeight: FontWeight.w600,
-    );
-
-    final regularTextStyle = baseTextStyle.copyWith(
-      color: Colors.white,
-      fontSize: 9,
-      fontWeight: FontWeight.w400,
-    );
-
-    final subHeaderTextStyle = regularTextStyle.copyWith(
-      fontSize: 12,
-    );
-
     final planetThumbnail = new Container(
       margin: new EdgeInsets.symmetric(vertical: 16),
       alignment: horizontal ? FractionalOffset.centerLeft
@@ -56,7 +39,7 @@ class PlanetSummary extends StatelessWidget {
           new Container(
             width: 8,
           ),
-          new Text(value, style: regularTextStyle)
+          new Text(value, style: Style.commonTextStyle)
         ],
       );
     }
@@ -73,14 +56,14 @@ class PlanetSummary extends StatelessWidget {
           ),
           new Text(
             planet.name,
-            style: headerTextStyle,
+            style: Style.headerTextStyle,
           ),
           new Container(
             height: 10,
           ),
           new Text(
             planet.location,
-            style: subHeaderTextStyle,
+            style: Style.regularTextStyle,
           ),
           new Container(
             margin: new EdgeInsets.symmetric(vertical: 8),
