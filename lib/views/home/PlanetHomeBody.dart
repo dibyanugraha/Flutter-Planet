@@ -7,7 +7,7 @@ class PlanetHomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Expanded(
         child: new Container(
-      color: Colors.blue,
+      color: Colors.orange,
       child: new CustomScrollView(
         scrollDirection: Axis.vertical,
         slivers: <Widget>[

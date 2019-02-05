@@ -47,7 +47,7 @@ class PlanetRow extends StatelessWidget {
         children: <Widget>[
           new Image.asset(image, height: 12,),
           new Container(width: 8,),
-          new Text(planet.gravity, style: regularTextStyle)
+          new Text(value, style: regularTextStyle)
         ],
       );
     }
