@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:planet/models/Planet.dart';
+import 'package:planet/views/summary/PlanetSummary.dart';
+import 'package:planet/views/common/Style.dart';
+import 'package:planet/views/separator/PlanetSeparator.dart';
 
 class PlanetDetailPage extends StatelessWidget {
   final Planet planet;
@@ -34,20 +37,38 @@ class PlanetDetailPage extends StatelessWidget {
   }
 
   Widget _getContent() {
+    final _overviewTitle = "Overview".toUpperCase();
     return new ListView(
       padding: new EdgeInsets.fromLTRB(0, 72, 0, 32),
-      children: <Widget>[],
+      children: <Widget>[
+        new PlanetSummary(
+          planet,
+          horizontal: false,
+        ),
+        new Container(
+          padding: new EdgeInsets.symmetric(horizontal: 32),
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              new Text(
+                _overviewTitle,
+                style: Style.headerTextStyle,
+              ),
+              new Separator(),
+              new Text(planet.description, style: Style.commonTextStyle),
+            ],
+          ),
+        )
+      ],
     );
   }
 
   Widget _getToolbar(BuildContext context) {
     return new Container(
-      margin: new EdgeInsets.only(
-        top: MediaQuery.of(context)
-          .padding
-          .top
+      margin: new EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: new BackButton(
+        color: Colors.white,
       ),
-      child: new BackButton(color: Colors.white,),
     );
   }
 
