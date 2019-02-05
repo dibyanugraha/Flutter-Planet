@@ -36,17 +36,16 @@ class PlanetRow extends StatelessWidget {
       ),
     );
 
-    Widget _planetValue(
-      {
-        String value,
-        String image
-      }
-    )
-    {
-        return new Row(
+    Widget _planetValue({String value, String image}) {
+      return new Row(
         children: <Widget>[
-          new Image.asset(image, height: 12,),
-          new Container(width: 8,),
+          new Image.asset(
+            image,
+            height: 12,
+          ),
+          new Container(
+            width: 8,
+          ),
           new Text(value, style: regularTextStyle)
         ],
       );
@@ -63,7 +62,8 @@ class PlanetRow extends StatelessWidget {
           ),
           new Text(
             planet.name,
-          style: headerTextStyle,),
+            style: headerTextStyle,
+          ),
           new Container(
             height: 10,
           ),
@@ -81,15 +81,13 @@ class PlanetRow extends StatelessWidget {
             children: <Widget>[
               new Expanded(
                 child: _planetValue(
-                  value: planet.distance,
-                  image: 'assets/images/ic_distance.png'
-                ),
+                    value: planet.distance,
+                    image: 'assets/images/ic_distance.png'),
               ),
               new Expanded(
                 child: _planetValue(
-                  value: planet.gravity,
-                  image: 'assets/images/ic_gravity.png'
-                ),
+                    value: planet.gravity,
+                    image: 'assets/images/ic_gravity.png'),
               )
             ],
           )
@@ -114,16 +112,20 @@ class PlanetRow extends StatelessWidget {
         ],
       ),
     );
-    return new Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 16,
-      ),
-      child: new Stack(
-        children: <Widget>[
-          planetCard,
-          planetThumbnail,
-        ],
+    return new GestureDetector(
+      onTap: () => Navigator.pushNamed(context, '/detail'),
+      child: new Container(
+        height: 120,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 16,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            planetCard,
+            planetThumbnail,
+          ],
+        ),
       ),
     );
   }
