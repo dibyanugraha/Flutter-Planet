@@ -6,6 +6,7 @@ class Planet {
   final String gravity;
   final String description;
   final String image;
+  final String picture;
 
   const Planet(
     {
@@ -15,7 +16,8 @@ class Planet {
       this.location,
       this.distance,
       this.gravity,
-      this.image
+      this.image,
+      this.picture,
     }
   );
 }
