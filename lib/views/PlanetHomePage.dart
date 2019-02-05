@@ -10,8 +10,6 @@ class PlanetHomePage extends StatelessWidget {
         children: <Widget>[
           new GradientAppBar("Planets"),
           new PlanetHomeBody(),
-          new PlanetHomeBody(),
-          new PlanetHomeBody(),
         ],
       ),
     );

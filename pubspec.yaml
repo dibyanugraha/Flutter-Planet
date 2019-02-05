@@ -75,5 +75,9 @@ flutter:
           weight: 400
   assets:
     - assets/images/mars.png
+    - assets/images/earth.png
+    - assets/images/mercury.png
+    - assets/images/moon.png
+    - assets/images/neptune.png
     - assets/images/ic_distance.png
     - assets/images/ic_gravity.png
